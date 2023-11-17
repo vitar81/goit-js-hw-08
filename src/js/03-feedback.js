@@ -29,6 +29,16 @@ function loadSavedData() {
 
 function handleSubmit(event) {
   event.preventDefault();
+  const formFields = formEl.elements;
+  const isFormValid = Array.from(formFields).every(
+    field => field.value.trim() !== ''
+  );
+
+  if (!isFormValid) {
+    alert('Please fill in all fields before submitting.');
+    return;
+  }
+
   localStorage.removeItem(keyStorage);
   console.log(formData);
   formData = {};
